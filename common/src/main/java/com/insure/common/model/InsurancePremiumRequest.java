@@ -21,7 +21,7 @@ public class InsurancePremiumRequest {
 		this.postalCode = postalCode;
 	}
 
-	public void InsurancePremiumRequest() {
+	public InsurancePremiumRequest() {
 	}
 
 	public int getAnnualMileage() {

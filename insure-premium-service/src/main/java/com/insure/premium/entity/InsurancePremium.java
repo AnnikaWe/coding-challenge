@@ -20,7 +20,7 @@ import jakarta.persistence.Table;
  * @since 20.02.2025
  */
 @Entity
-@Table(name = "insurance_premiums")
+@Table(name = "insurance_premium")
 public class InsurancePremium {
 
 	@Id
