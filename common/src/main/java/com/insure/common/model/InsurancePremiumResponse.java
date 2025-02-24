@@ -1,7 +1,5 @@
 package com.insure.common.model;
 
-import lombok.Getter;
-import lombok.Setter;
 
 /**
  * Insurance premium request model.

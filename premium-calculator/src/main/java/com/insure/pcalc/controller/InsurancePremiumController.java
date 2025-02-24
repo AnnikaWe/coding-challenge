@@ -1,6 +1,3 @@
-/**
- * 
- */
 package com.insure.pcalc.controller;
 
 import java.io.IOException;

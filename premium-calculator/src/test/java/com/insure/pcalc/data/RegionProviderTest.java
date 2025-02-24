@@ -35,7 +35,7 @@ public class RegionProviderTest {
 	@BeforeEach
 	void setUp() throws IOException {
 		// Create a temporary test CSV file
-		File file = new File("src/main/resources/data/" + TEST_CSV_FILE);
+		File file = new File("src/test/resources/data/" + TEST_CSV_FILE);
 		try (FileWriter writer = new FileWriter(file)) {
 			writer.append("id,name,REGION1,type,REGION3,REGION4,POSTLEITZAHL,ORT\n");
 			writer.append("1,Sample,State,Type,Country,City,12345,District\n");
