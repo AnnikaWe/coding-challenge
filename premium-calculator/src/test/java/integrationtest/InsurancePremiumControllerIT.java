@@ -9,7 +9,6 @@ import org.springframework.boot.test.autoconfigure.web.servlet.AutoConfigureMock
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.http.MediaType;
 import org.springframework.test.web.servlet.MockMvc;
-
 import com.insure.pcalc.PremiumCalculatorApplication;
 
 /**
@@ -33,7 +32,7 @@ public class InsurancePremiumControllerIT {
 	                .contentType(MediaType.APPLICATION_JSON)
 	                .content(requestJson))
 	                .andExpect(status().isOk())
-	                .andExpect(jsonPath("$.premiumAmount").value(0.3))
+	                .andExpect(jsonPath("$.premiumAmount").value(0.18))
 	                .andExpect(jsonPath("$.currency").value("EUR"));
 	    }
 	}

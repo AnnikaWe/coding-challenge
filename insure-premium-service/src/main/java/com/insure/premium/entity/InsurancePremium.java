@@ -1,6 +1,3 @@
-/**
- * 
- */
 package com.insure.premium.entity;
 
 import java.time.LocalDate;
@@ -47,5 +44,63 @@ public class InsurancePremium {
 		this.currency = currency;
 		this.createdAt = LocalDate.now();
 	}
+
+	public UUID getId() {
+		return id;
+	}
+
+	public void setId(UUID id) {
+		this.id = id;
+	}
+
+	public int getAnnualMileage() {
+		return annualMileage;
+	}
+
+	public void setAnnualMileage(int annualMileage) {
+		this.annualMileage = annualMileage;
+	}
+
+	public String getVehicleType() {
+		return vehicleType;
+	}
+
+	public void setVehicleType(String vehicleType) {
+		this.vehicleType = vehicleType;
+	}
+
+	public String getPostalCode() {
+		return postalCode;
+	}
+
+	public void setPostalCode(String postalCode) {
+		this.postalCode = postalCode;
+	}
+
+	public double getPremiumAmount() {
+		return premiumAmount;
+	}
+
+	public void setPremiumAmount(double premiumAmount) {
+		this.premiumAmount = premiumAmount;
+	}
+
+	public String getCurrency() {
+		return currency;
+	}
+
+	public void setCurrency(String currency) {
+		this.currency = currency;
+	}
+
+	public LocalDate getCreatedAt() {
+		return createdAt;
+	}
+
+	public void setCreatedAt(LocalDate createdAt) {
+		this.createdAt = createdAt;
+	}
+	
+	
 
 }

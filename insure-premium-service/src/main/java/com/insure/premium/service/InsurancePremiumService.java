@@ -1,5 +1,6 @@
 package com.insure.premium.service;
 
+import org.springframework.context.annotation.Bean;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
 import org.springframework.web.client.RestTemplate;
@@ -25,6 +26,7 @@ public class InsurancePremiumService {
 
 	public InsurancePremiumService(InsurancePremiumRepository repository) {
 		this.repository = repository;
+		
 	}
 
 	public InsurancePremiumResponse calculatePremium(InsurancePremiumRequest request) {
@@ -40,5 +42,6 @@ public class InsurancePremiumService {
 
 		return responseEntity.getBody();
 	}
+	
 
 }

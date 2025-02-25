@@ -1,6 +1,3 @@
-/**
- * 
- */
 package com.insure.premium.repository;
 
 import org.springframework.data.jpa.repository.JpaRepository;
