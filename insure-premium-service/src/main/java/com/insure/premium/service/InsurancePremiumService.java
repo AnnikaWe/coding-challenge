@@ -23,7 +23,7 @@ public class InsurancePremiumService {
 
 	private final InsurancePremiumRepository repository;
 	private final RestTemplate restTemplate = new RestTemplate();
-	private final String url = "http://localhost:8080/insurance/premium";
+	private final String url = "http://172.19.0.2:8080/insurance/premium";
     private final String clientId = "client-01";
     private final String clientSecret = "client-secret";
 
@@ -39,7 +39,14 @@ public class InsurancePremiumService {
         headers.set("Authorization", "Basic " + base64Credentials);
         return headers;
     }
-
+	
+	/**
+	 * Calculates the insurance premium based on the provided request details.
+	 * 
+	 * @param request The insurance premium request containing details about the annual mileage,vehicle and region.
+	 * @return The response object containing the calculated premium amount and currency.
+	 * @throws RuntimeException If the external service fails or returns an invalid response.
+	 */
 	public InsurancePremiumResponse calculatePremium(InsurancePremiumRequest request) {
 		HttpEntity<InsurancePremiumRequest> entity = new HttpEntity<>(request, createHeaders());
 

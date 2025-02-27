@@ -7,18 +7,24 @@ services:
     ports:
       - "8081:8081"  
     environment:
-      - SPRING_DATASOURCE_URL=jdbc:postgresql://localhost:5432/postgres
+      - SPRING_DATASOURCE_URL=jdbc:postgresql://db:5432/postgres
       - SPRING_DATASOURCE_USERNAME=postgres
       - SPRING_DATASOURCE_PASSWORD=posW5d
+    networks:
+      - insure-net
     depends_on:
-      - db
-    stdin_open: true  # allow interactive input
-    tty: true  # open terminal
+      db:
+        condition: service_healthy
+    stdin_open: true
+    tty: true
     command: [ "sh", "-c", "java -jar /InsurePremiumApplication.jar && tail -f /dev/null" ]
 
   premium-calculator:
     build: /mnt/c/Users/Minti/Desktop/Bewerbung/Scopevisio/CodingChallenge-Java/coding-challenge/premium-calculator
     container_name: premium-calculator
+    networks:
+      insure-net:
+        ipv4_address: 172.19.0.2
     ports:
       - "8080:8080"  
     command: [ "sh", "-c", "java -jar /PremiumCalculatorApplication.jar" ]
@@ -34,7 +40,26 @@ services:
       - POSTGRES_USER=postgres
       - POSTGRES_PASSWORD=posW5d
     volumes:
-      - pgdata:/var/lib/postgresql/data 
-
+      - pgdata:/var/lib/postgresql/data
+      - ./coding-challenge/insure-premium-service/src/main/resources/liquibase:/docker-entrypoint-initdb.d
+    healthcheck:
+      test: ["CMD", "pg_isready", "-U", "postgres"]
+      interval: 10s
+      retries: 5
+      start_period: 10s
+    networks:
+      insure-net:
+        ipv4_address: 172.19.0.1
+    
 volumes:
   pgdata:
+  
+networks:
+  insure-net:
+    driver: bridge
+    ipam:
+      config:
+        - subnet: "172.19.0.0/16"
+          gateway: "172.19.0.1"
+          gateway: "172.19.0.4"
+
