@@ -1,0 +1,12 @@
+FROM openjdk:23
+
+
+WORKDIR /
+
+# buld jars
+COPY target/*.jar PremiumCalculatorApplication.jar
+
+EXPOSE 8080
+
+# start app
+CMD ["java", "-jar", "PremiumCalculatorApplication.jar"]

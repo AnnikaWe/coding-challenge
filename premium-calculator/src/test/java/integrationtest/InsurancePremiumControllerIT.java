@@ -7,6 +7,7 @@ import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.autoconfigure.web.servlet.AutoConfigureMockMvc;
 import org.springframework.boot.test.context.SpringBootTest;
+import org.springframework.http.HttpHeaders;
 import org.springframework.http.MediaType;
 import org.springframework.test.web.servlet.MockMvc;
 import com.insure.pcalc.PremiumCalculatorApplication;
@@ -29,6 +30,7 @@ public class InsurancePremiumControllerIT {
 	        String requestJson = "{ \"annualMileage\": 15000, \"postalCode\": \"53757\", \"vehicleType\": \"Motorrad\" }";
 
 	        mockMvc.perform(post("/insurance/premium")
+	        		.header(HttpHeaders.AUTHORIZATION, "Basic Y2xpZW50LTAxOmNsaWVudC1zZWNyZXQ=")
 	                .contentType(MediaType.APPLICATION_JSON)
 	                .content(requestJson))
 	                .andExpect(status().isOk())

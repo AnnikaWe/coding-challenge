@@ -13,6 +13,7 @@ import static org.mockito.Mockito.verify;
 import static org.mockito.Mockito.when;
 
 import java.lang.reflect.Field;
+import java.util.Scanner;
 
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
@@ -21,6 +22,7 @@ import org.mockito.InjectMocks;
 import org.mockito.Mock;
 import org.mockito.MockitoAnnotations;
 import org.mockito.junit.jupiter.MockitoExtension;
+import org.springframework.http.HttpEntity;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.client.RestTemplate;
@@ -55,7 +57,6 @@ public class InsurancePremiumServiceTest {
 	@BeforeEach
 	void setUp() throws NoSuchFieldException, SecurityException, IllegalArgumentException, IllegalAccessException {
 		MockitoAnnotations.openMocks(this);
-		
 		service = new InsurancePremiumService(repository);
 		
 		// Use reflection to inject the mock RestTemplate into the service instance
@@ -70,7 +71,7 @@ public class InsurancePremiumServiceTest {
 
 	@Test
 	void testCalculatePremium()  {
-		when(restTemplate.postForEntity(anyString(), any(InsurancePremiumRequest.class),
+		when(restTemplate.postForEntity(anyString(), any(HttpEntity.class),
 				eq(InsurancePremiumResponse.class))).thenReturn(new ResponseEntity<>(response, HttpStatus.OK));
 
 		InsurancePremiumResponse result = service.calculatePremium(request);
@@ -92,7 +93,7 @@ public class InsurancePremiumServiceTest {
 
 	@Test
 	void testCalculatePremiumThrowRuntimeException() {
-		when(restTemplate.postForEntity(anyString(), any(InsurancePremiumRequest.class),
+		when(restTemplate.postForEntity(anyString(), any(HttpEntity.class),
 				eq(InsurancePremiumResponse.class)))
 						.thenReturn(new ResponseEntity<>(null, HttpStatus.INTERNAL_SERVER_ERROR));
 

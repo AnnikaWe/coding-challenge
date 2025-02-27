@@ -1,0 +1,12 @@
+FROM openjdk:23
+
+
+WORKDIR /
+
+# buld jars
+COPY target/*.jar InsurePremiumApplication.jar
+
+EXPOSE 8081
+
+# start app
+CMD ["java", "-jar", "InsurePremiumApplication.jar"]

@@ -1,0 +1,40 @@
+version: '3.8'
+
+services:
+  insure-premium-service:
+    build: /mnt/c/Users/Minti/Desktop/Bewerbung/Scopevisio/CodingChallenge-Java/coding-challenge/insure-premium-service
+    container_name: insure-premium-service
+    ports:
+      - "8081:8081"  
+    environment:
+      - SPRING_DATASOURCE_URL=jdbc:postgresql://localhost:5432/postgres
+      - SPRING_DATASOURCE_USERNAME=postgres
+      - SPRING_DATASOURCE_PASSWORD=posW5d
+    depends_on:
+      - db
+    stdin_open: true  # allow interactive input
+    tty: true  # open terminal
+    command: [ "sh", "-c", "java -jar /InsurePremiumApplication.jar && tail -f /dev/null" ]
+
+  premium-calculator:
+    build: /mnt/c/Users/Minti/Desktop/Bewerbung/Scopevisio/CodingChallenge-Java/coding-challenge/premium-calculator
+    container_name: premium-calculator
+    ports:
+      - "8080:8080"  
+    command: [ "sh", "-c", "java -jar /PremiumCalculatorApplication.jar" ]
+
+  db:
+    image: postgres:latest
+    container_name: postgres-container
+    restart: always
+    ports:
+      - "5432:5432"
+    environment:
+      - POSTGRES_DB=postgres
+      - POSTGRES_USER=postgres
+      - POSTGRES_PASSWORD=posW5d
+    volumes:
+      - pgdata:/var/lib/postgresql/data 
+
+volumes:
+  pgdata:

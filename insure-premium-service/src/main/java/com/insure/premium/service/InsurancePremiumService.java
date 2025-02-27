@@ -1,6 +1,7 @@
 package com.insure.premium.service;
 
-import org.springframework.context.annotation.Bean;
+import org.springframework.http.HttpEntity;
+import org.springframework.http.HttpHeaders;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
 import org.springframework.web.client.RestTemplate;
@@ -23,15 +24,27 @@ public class InsurancePremiumService {
 	private final InsurancePremiumRepository repository;
 	private final RestTemplate restTemplate = new RestTemplate();
 	private final String url = "http://localhost:8080/insurance/premium";
+    private final String clientId = "client-01";
+    private final String clientSecret = "client-secret";
 
 	public InsurancePremiumService(InsurancePremiumRepository repository) {
 		this.repository = repository;
 		
 	}
+	
+	private HttpHeaders createHeaders() {
+        HttpHeaders headers = new HttpHeaders();
+        String credentials = clientId + ":" + clientSecret;
+        String base64Credentials = java.util.Base64.getEncoder().encodeToString(credentials.getBytes());
+        headers.set("Authorization", "Basic " + base64Credentials);
+        return headers;
+    }
 
 	public InsurancePremiumResponse calculatePremium(InsurancePremiumRequest request) {
-		ResponseEntity<InsurancePremiumResponse> responseEntity = restTemplate.postForEntity(url, request,
-				InsurancePremiumResponse.class);
+		HttpEntity<InsurancePremiumRequest> entity = new HttpEntity<>(request, createHeaders());
+
+        ResponseEntity<InsurancePremiumResponse> responseEntity =
+                restTemplate.postForEntity(url, entity, InsurancePremiumResponse.class);
 		if (responseEntity.getStatusCode().is2xxSuccessful() && responseEntity.getBody() != null) {
 			InsurancePremiumResponse response = responseEntity.getBody();
 			repository.save(new InsurancePremium(request.getAnnualMileage(), request.getVehicleType(),
