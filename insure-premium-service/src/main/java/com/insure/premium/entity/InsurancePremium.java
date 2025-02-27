@@ -10,7 +10,7 @@ import jakarta.persistence.Id;
 import jakarta.persistence.Table;
 
 /**
- * Entity class for insurance premium
+ * Entity class to persitst insurance premium in database.
  * 
  * @author Annika Weisser
  * @version 1.0

@@ -1,6 +1,3 @@
-/**
- * 
- */
 package com.insure.pcalc.data;
 
 import java.util.HashMap;

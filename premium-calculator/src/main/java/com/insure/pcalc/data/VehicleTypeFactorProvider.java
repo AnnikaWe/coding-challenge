@@ -1,11 +1,7 @@
-/**
- * 
- */
 package com.insure.pcalc.data;
 
 import java.util.HashMap;
 import java.util.Map;
-import java.util.concurrent.ThreadLocalRandom;
 
 /**
  * Provider class for the vehicle type factor.

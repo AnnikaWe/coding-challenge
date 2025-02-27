@@ -1,4 +1,3 @@
-
 package com.insure.pcalc.data;
 
 import java.io.IOException;

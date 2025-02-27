@@ -15,7 +15,7 @@ import com.insure.pcalc.service.InsurancePremiumCalculateService;
 import com.opencsv.exceptions.CsvValidationException;
 
 /**
- * Controller class for insurance premium
+ * Controller class for insurance premium requests.
  * 
  * @author Annika Weisser
  * @version 1.0
