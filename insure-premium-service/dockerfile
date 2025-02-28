@@ -26,7 +26,7 @@ COPY --from=common-build /common/target/*.jar /insure-premium-service/lib/
 RUN mvn clean package
 
 
-FROM openjdk:23-slim
+FROM openjdk:23
 
 WORKDIR /app
 
