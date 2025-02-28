@@ -1,0 +1,7 @@
+com\insure\premium\controller\HomeController.class
+com\insure\premium\controller\InsuranceCalculatorController.class
+com\insure\premium\entity\InsurancePremium.class
+com\insure\premium\repository\InsurancePremiumRepository.class
+com\insure\premium\service\InsurancePremiumService.class
+com\insure\premium\config\SecurityConfig.class
+com\insure\premium\InsurePremiumApplication.class
