@@ -1,29 +1,39 @@
-FROM maven:3.9.9-openjdk-23-slim AS build
 
+FROM maven:3.9.9 AS common-build
+
+WORKDIR /build
+
+# Kopiere die gesamte Projektstruktur
+COPY ../pom.xml .  
+COPY ../common /common  
+COPY ../insure-premium-service /insure-premium-service
+
+# Baue das Common-Projekt
+RUN mvn clean install -pl common --also-make
+
+
+FROM maven:3.9. AS insure-premium-service-build
 
 WORKDIR /insure-premium-service
 
 
-COPY pom.xml .
+COPY ../insure-premium-service /insure-premium-service
 
 
-RUN mvn clean install
+COPY --from=common-build /common/target/*.jar /insure-premium-service/lib/
 
-# copy code
-COPY . .
 
-# create jar
 RUN mvn clean package
 
-FROM openjdk:23
+
+FROM openjdk:23-slim
+
+WORKDIR /app
 
 
-WORKDIR /
-
-# buld jars
-COPY --from=build /insure-premium-service/target/*.jar InsurePremiumApplication.jar
+COPY --from=insure-premium-service-build /insure-premium-service/target/*.jar /app/InsurePremiumApplication.jar
 
 EXPOSE 8081
 
-# start app
 CMD ["java", "-jar", "InsurePremiumApplication.jar"]
+

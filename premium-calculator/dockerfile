@@ -1,30 +1,40 @@
+# build common lib
+FROM maven:3.9.9 AS common-build
 
-FROM maven:3.9.9-openjdk-23-slim AS build
 
+WORKDIR /build
+
+
+COPY ../pom.xml .  
+COPY ../common /common  
+COPY ../premium-calculator /premium-calculator
+
+RUN mvn clean install -pl common --also-make
+
+
+FROM maven:3.9.9 AS premium-calculator-build
 
 WORKDIR /premium-calculator
 
 
-COPY pom.xml .
+COPY ../premium-calculator /premium-calculator
 
 
-RUN mvn clean install
+COPY --from=common-build /common/target/*.jar /premium-calculator/lib/
 
-# copy code
-COPY . .
-
-# create jar
+# build Premium-Calculator
 RUN mvn clean package
 
-FROM openjdk:23
 
+FROM openjdk:23-slim
 
-WORKDIR /
+WORKDIR /app
 
-# buld jars
-COPY --from=build /premium-calculator/target/*.jar PremiumCalculatorApplication.jar
+# copy jar
+COPY --from=premium-calculator-build /premium-calculator/target/*.jar /app/PremiumCalculatorApplication.jar
+
 
 EXPOSE 8080
 
-# start app
+
 CMD ["java", "-jar", "PremiumCalculatorApplication.jar"]
