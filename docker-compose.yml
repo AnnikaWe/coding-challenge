@@ -17,7 +17,7 @@ services:
         condition: service_healthy
     stdin_open: true
     tty: true
-    command: [ "sh", "-c", "mvn clean package && java -jar /target/InsurePremiumApplication.jar && tail -f /dev/null" ]
+    command: [ "sh", "-c", "mvn clean package && java -jar target/InsurePremiumApplication.jar && tail -f /dev/null" ]
 
   premium-calculator:
     build: ./premium-calculator
@@ -27,7 +27,7 @@ services:
         ipv4_address: 172.19.0.2
     ports:
       - "8080:8080"  
-    command: [ "sh", "-c", "mvn clean package && java -jar /target/PremiumCalculatorApplication.jar" ]
+    command: [ "sh", "-c", "mvn clean package && java -jar target/PremiumCalculatorApplication.jar" ]
 
   db:
     image: postgres:latest
@@ -50,10 +50,10 @@ services:
     networks:
       insure-net:
         ipv4_address: 172.19.0.1
-
+    
 volumes:
   pgdata:
-
+  
 networks:
   insure-net:
     driver: bridge
