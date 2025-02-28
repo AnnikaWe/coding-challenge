@@ -3,7 +3,6 @@ package com.insure.pcalc.security;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.autoconfigure.web.servlet.AutoConfigureMockMvc;
-import org.springframework.boot.test.autoconfigure.web.servlet.WebMvcTest;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.boot.test.mock.mockito.MockBean;
 import org.springframework.http.HttpHeaders;
@@ -15,7 +14,7 @@ import com.insure.pcalc.PremiumCalculatorApplication;
 import com.insure.pcalc.service.InsurancePremiumCalculateService;
 
 /**
- * Test for BasiAuthentication 
+ * Test for Basic Authentication 
  * 
  * @author Annika Weisser
  * @version 1.0
