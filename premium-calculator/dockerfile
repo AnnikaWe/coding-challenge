@@ -1,3 +1,9 @@
+RUN mvn clean install
+
+COPY ./ ./ 
+
+RUN mvn clean package
+
 FROM openjdk:23
 
 
