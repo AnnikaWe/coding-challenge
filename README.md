@@ -24,8 +24,6 @@ Dieses Projekt nutzt eine **Microservice-Architektur**, um eine **Versicherungsp
 
 Folgende Tools werden für die Ausfürhung der Anwendung benötigt: 
 
-- **Maven** 3.9.9
-- **Java** 23
 - **Docker**
 - **docker-compose**
 
@@ -34,12 +32,7 @@ Folgende Tools werden für die Ausfürhung der Anwendung benötigt:
 
 
 ## Verwendung der Services
-
-### 1. Maven build
-- mvn build install in allen drei packages
-- mvn clean package in insure-premium-service und premium-calculator package
-
-### 2. Docker-Container Setup
+### 1. Docker-Container Setup
 
 
 ```bash
