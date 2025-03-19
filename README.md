@@ -100,7 +100,7 @@ Die Tests werden automatisch über einen Maven-Build ausgeführt, um eine umfass
 ---
 ## Verbesserungspotential:
 
-* Die aktuelle GUI ist sehr einfach gehalten und soll nur der Usereingabe dienen. Eine zukünftige UI könnte mit React umgesetzt werden. Zum Testen der Weboberfläche könnte beispielsweise Playwright veerwendet werden. Dieses Framework unterstützt unter anderen die Programmiersprache Java, mehrere Browser sowie eine das Testen von Moblie-Ansichten.
+* Die aktuelle GUI ist sehr einfach gehalten und soll nur der Usereingabe dienen. Eine zukünftige UI könnte mit React umgesetzt werden. Zum Testen der Weboberfläche könnte beispielsweise Playwright verwendet werden. Dieses Framework unterstützt unter anderen die Programmiersprache Java, mehrere Browser sowie das Testen von Moblie-Ansichten.
 * Die Sicherheit optimieren: Statt Basic Auth und hartcodierter Authentifizierung sollte ein Autorisierungsmechanismus wie OAuth verwendet werden. Bei Basic Auth werden die Authentifizierungsdaten nur kodiert übertragen, was sie anfällig für Angriffe macht. OAuth hingegen nutzt ein zeitlich begrenztes Token, das die Sicherheit erhöht und wiederholte Passwortübertragungen vermeidet.
 * Umfassenderes Error Handling umsetzten
 * Verbesserungen des Testkonzept:
