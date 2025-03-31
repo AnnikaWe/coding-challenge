@@ -1,0 +1,57 @@
+openapi: 3.0.1
+info:
+  title: Insurance Premium API
+  description: API for calculating insurance premiums
+  version: 1.0.0
+servers:
+  - url: http://localhost:8080
+paths:
+  /insurance/premium:
+    post:
+      tags:
+        - Insurance Premium
+      summary: Calculation of insurance premium
+      description: Calculates the insurance premium based on the provided data.
+      operationId: getInsuranceQuote
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/InsurancePremiumRequest'
+      responses:
+        "200":
+          description: Successful premium calculation
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/InsurancePremiumResponse'
+        "400":
+          description: Invalid request
+        "500":
+          description: Internal server error
+components:
+  schemas:
+    InsurancePremiumRequest:
+      type: object
+      properties:
+        annualMileage:
+          type: integer
+          description: Annual mileage in kilometers
+        vehicleType:
+          type: string
+          description: Type of vehicle
+        postalCode:
+          type: string
+          description: Policyholder's postal code
+    InsurancePremiumResponse:
+      type: object
+      properties:
+        premiumAmount:
+          type: number
+          format: double
+          description: Calculated insurance premium
+        currency:
+          type: string
+          description: Currency of the premium
+          example: "EUR"

@@ -1,0 +1,8 @@
+com\insure\pcalc\data\RegionFaktorProvider.class
+com\insure\pcalc\controller\InsurancePremiumController.class
+com\insure\pcalc\data\Region.class
+com\insure\pcalc\service\InsurancePremiumCalculateService.class
+com\insure\pcalc\data\RegionProvider.class
+com\insure\pcalc\security\SecurityConfig.class
+com\insure\pcalc\PremiumCalculatorApplication.class
+com\insure\pcalc\data\VehicleTypeFactorProvider.class

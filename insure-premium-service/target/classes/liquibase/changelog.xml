@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<databaseChangeLog
+	xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog
+        http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.8.xsd">
+
+	<!-- ChangeSet for creating insurance_premium table -->
+	<changeSet id="1" author="annika_weisser">
+		<createTable tableName="insurance_premium">
+			<column name="id" type="varchar(36)">
+				<constraints primaryKey="true" nullable="false" />
+			</column>
+			<column name="annual_mileage" type="int">
+				<constraints nullable="false" />
+			</column>
+			<column name="vehicle_type" type="varchar(255)">
+				<constraints nullable="false" />
+			</column>
+			<column name="postal_code" type="varchar(20)">
+				<constraints nullable="false" />
+			</column>
+			<column name="premium_amount" type="double">
+				<constraints nullable="false" />
+			</column>
+			<column name="currency" type="varchar(10)">
+				<constraints nullable="false" />
+			</column>
+			<column name="created_at" type="date">
+				<constraints nullable="false" />
+			</column>
+		</createTable>
+	</changeSet>
+
+</databaseChangeLog>

@@ -1,0 +1,57 @@
+version: '3.8'
+
+services:
+  insure-premium-service:
+    build: ./insure-premium-service
+    container_name: insure-premium-service
+    ports:
+      - "8081:8081"  
+    environment:
+      - SPRING_DATASOURCE_URL=jdbc:postgresql://postgres-container:5432/postgres
+      - SPRING_DATASOURCE_USERNAME=postgres
+      - SPRING_DATASOURCE_PASSWORD=posW5d
+    networks:
+      - insure-net
+    depends_on:
+      db:
+        condition: service_healthy
+    stdin_open: true
+    tty: true
+    command: [ "sh", "-c", "java -jar /InsurePremiumApplication.jar && tail -f /dev/null" ]
+
+  premium-calculator:
+    build: ./premium-calculator
+    container_name: premium-calculator
+    ports:
+      - "8080:8080"  
+    command: [ "sh", "-c", "java -jar /PremiumCalculatorApplication.jar" ]
+    networks:
+      - insure-net
+
+  db:
+    image: postgres:latest
+    container_name: postgres-container
+    restart: always
+    ports:
+      - "5432:5432"
+    environment:
+      - POSTGRES_DB=postgres
+      - POSTGRES_USER=postgres
+      - POSTGRES_PASSWORD=posW5d
+    volumes:
+      - pgdata:/var/lib/postgresql/data
+      - ./insure-premium-service/src/main/resources/liquibase:/docker-entrypoint-initdb.d
+    healthcheck:
+      test: ["CMD", "pg_isready", "-U", "postgres"]
+      interval: 10s
+      retries: 5
+      start_period: 10s
+    networks:
+       - insure-net
+    
+volumes:
+  pgdata:
+  
+networks:
+  insure-net:
+    driver: bridge
