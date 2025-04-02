@@ -22,9 +22,9 @@ jobs:
           java-version: '23'
           distribution: 'temurin'  
 
-      - name: Build insurance-common
+      - name: Build common
         run: |
-          cd insurance-common
+          cd common
           mvn clean install
 
       - name: Build premium-calculator
