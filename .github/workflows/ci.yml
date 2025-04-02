@@ -22,12 +22,17 @@ jobs:
           java-version: '23'
           distribution: 'temurin'  
 
-      - name: Build insure-premium-service
+      - name: Build insurance-common
         run: |
-          cd insure-premium-service
+          cd insurance-common
           mvn clean install
 
       - name: Build premium-calculator
         run: |
           cd premium-calculator 
+          mvn clean install
+
+      - name: Build insure-premium-service
+        run: |
+          cd insure-premium-service
           mvn clean install
