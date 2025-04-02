@@ -97,13 +97,15 @@ Die Tests konzentrieren sich vor allem auf funktionale Klassen, insbesondere Ser
 Die Tests werden automatisch über einen Maven-Build ausgeführt, um eine umfassende Testabdeckung zu gewährleisten.
 
 
+## CI- Pipeline
+
+Das Repository verfügt über eine CI-Pipeline, die jedes Mal bei der Erstellung eines PRs für den Master-Branch und bei einem Push auf den Master-Branch aktiviert wird. Über die entsprechenden GitHub Actions wird der Maven-Build inklusive der Testausführung für alle drei Java-Services durchgeführt. Durch die Einführung automatisierter Builds und Tests mit dieser Pipeline wird sichergestellt, dass neue Änderungen die Softwarequalität nicht beeinträchtigen.
+
 ---
 ## Verbesserungspotential:
 
 * Die aktuelle GUI ist sehr einfach gehalten und soll nur der Usereingabe dienen. Eine zukünftige UI könnte mit React umgesetzt werden. Zum Testen der Weboberfläche könnte beispielsweise Playwright verwendet werden. Dieses Framework unterstützt unter anderen die Programmiersprache Java, mehrere Browser sowie das Testen von Moblie-Ansichten.
 * Die Sicherheit optimieren: Statt Basic Auth und hartcodierter Authentifizierung sollte ein Autorisierungsmechanismus wie OAuth verwendet werden. Bei Basic Auth werden die Authentifizierungsdaten nur kodiert übertragen, was sie anfällig für Angriffe macht. OAuth hingegen nutzt ein zeitlich begrenztes Token, das die Sicherheit erhöht und wiederholte Passwortübertragungen vermeidet.
 * Umfassenderes Error Handling umsetzten
-* Verbesserungen des Testkonzept:
-	* **CI/CD-Pipeline**: 
-  Die Einführung von automatisierten Builds und Tests  in einer CI/CD-Pipeline , kann sicherstellen, dass neue Änderungen die Softwarequalität nicht beeinträchtigen.
-	* **Code-Reviews**: Es sollte nicht direkt auf dem Hauptbranch gearbeitet werden. Dabei sollten Pull-Requests sollten unter Wahrung des 4-Augen-Prinzips überprüft werden.
+* **Code-Reviews**:
+	* Es sollte nicht direkt auf dem Hauptbranch gearbeitet werden. Dabei sollten Pull-Requests sollten unter Wahrung des 4-Augen-Prinzips überprüft werden.
