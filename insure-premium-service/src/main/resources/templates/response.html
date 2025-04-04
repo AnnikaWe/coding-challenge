@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Versicherungsprämieberechnung Ergebnis</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f0f8ff; /* Light blue background */
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            padding: 20px;
+        }
+        
+        h2 {
+            color: #003366; /* Dark blue for headings */
+            margin-bottom: 20px;
+        }
+        
+        .result-container {
+            background-color: white;
+            padding: 30px;
+            border-radius: 8px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            width: 100%;
+            max-width: 500px;
+            text-align: center;
+        }
+        
+        .premium-box {
+            margin: 30px 0;
+            padding: 20px;
+            border: 2px solid #cce0ff;
+            border-radius: 8px;
+            background-color: #f5f9ff;
+        }
+        
+        .premium-amount {
+            font-size: 36px;
+            font-weight: bold;
+            color: #003366;
+            margin: 10px 0;
+        }
+        
+        .currency {
+            font-size: 18px;
+            color: #0066cc;
+        }
+        
+        .back-button {
+            background-color: #0066cc;
+            color: white;
+            padding: 12px 20px;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            font-weight: bold;
+            margin-top: 20px;
+            text-decoration: none;
+            display: inline-block;
+        }
+        
+        .back-button:hover {
+            background-color: #004d99;
+        }
+        
+        .success-icon {
+            color: #0066cc;
+            font-size: 48px;
+            margin-bottom: 20px;
+        }
+    </style>
+  
+</head>
+<body>
+    <h2>Versicherungsprämie Ergebnis</h2>
+    <div class="result-container">
+        <div class="success-icon">✓</div>
+        <h3>Die Berechnung wurde erfolgreich abgeschlossen</h3>
+        
+        <div class="premium-box">
+            <p>Die jährliche Versicherungs-Prämie beträgt:</p>
+			<div class="premium-amount">
+			    <span id="premium-amount" th:text="${premiumAmount}">0.00</span>
+			    <span class="currency" id="currency" th:text="${currency}">EUR</span>
+			</div>
+        </div>
+        
+        <a href="/" class="back-button">Zurück zum Rechner</a>
+    </div>
+</body>
+</html>
+
