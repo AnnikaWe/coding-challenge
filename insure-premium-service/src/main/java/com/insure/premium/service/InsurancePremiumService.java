@@ -23,7 +23,7 @@ public class InsurancePremiumService {
 
 	private final InsurancePremiumRepository repository;
 	private final RestTemplate restTemplate = new RestTemplate();
-	private final String url = "http://172.19.0.2:8080/insurance/premium";
+	private final String url = "http://premium-calculator:8080/insurance/premium";
     private final String clientId = "client-01";
     private final String clientSecret = "client-secret";
 
