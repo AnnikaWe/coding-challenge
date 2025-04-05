@@ -21,7 +21,9 @@ jobs:
           python-version: '3.9'
 
       - name: Install dependencies
-        run: pip install diagrams
+        run: |
+          pip install diagrams
+          sudo apt-get install -y graphviz  # Installiere Graphviz
 
       - name: Generate diagram
         run: |
