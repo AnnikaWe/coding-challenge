@@ -15,6 +15,8 @@ import org.mockito.InjectMocks;
 import org.mockito.Mock;
 import org.mockito.MockitoAnnotations;
 import org.mockito.junit.jupiter.MockitoExtension;
+import org.springframework.ui.ConcurrentModel;
+import org.springframework.ui.Model;
 
 /**
  * Unit test for {@link InsuranceCalculatorController}
@@ -43,14 +45,16 @@ public class InsuranceCalculatorControllerTest {
 		int annualMileage = 15000;
 		String vehicleType = "LKW";
 		String postalCode = "53757";
+		Model model = new ConcurrentModel();
 		InsurancePremiumResponse expectedResponse = new InsurancePremiumResponse(500.0);
 
 		when(insurancePremiumService.calculatePremium(any(InsurancePremiumRequest.class))).thenReturn(expectedResponse);
 
-		InsurancePremiumResponse response = insuranceCalculatorController.calculateInsurance(annualMileage, vehicleType,
-				postalCode);
+		   String viewName = insuranceCalculatorController.calculateInsurance(annualMileage, vehicleType, postalCode, model);
 
-		assertThat(response).isEqualTo(expectedResponse);
-		verify(insurancePremiumService, times(1)).calculatePremium(any(InsurancePremiumRequest.class));
+	        assertThat(viewName).isEqualTo("response");
+	        assertThat(model.getAttribute("premiumAmount")).isEqualTo(expectedResponse.getPremiumAmount());
+	        assertThat(model.getAttribute("currency")).isEqualTo(expectedResponse.getCurrency());
+	        verify(insurancePremiumService, times(1)).calculatePremium(any(InsurancePremiumRequest.class));
 	}
 }

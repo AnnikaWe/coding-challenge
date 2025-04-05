@@ -10,6 +10,7 @@ services:
       - SPRING_DATASOURCE_URL=jdbc:postgresql://172.19.0.1:5432/postgres
       - SPRING_DATASOURCE_USERNAME=postgres
       - SPRING_DATASOURCE_PASSWORD=posW5d
+      - SPRING_LIQUIBASE_CHANGE_LOG=classpath:/liquibase/changelog.xml
     networks:
       - insure-net
     depends_on:
@@ -23,8 +24,7 @@ services:
     build: ./premium-calculator
     container_name: premium-calculator
     networks:
-      insure-net:
-        ipv4_address: 172.19.0.2
+      - insure-net
     ports:
       - "8080:8080"  
     command: [ "sh", "-c", "java -jar /PremiumCalculatorApplication.jar" ]
@@ -42,14 +42,16 @@ services:
     volumes:
       - pgdata:/var/lib/postgresql/data
       - ./coding-challenge/insure-premium-service/src/main/resources/liquibase:/docker-entrypoint-initdb.d
+          - SPRING_DATASOURCE_PASSWORD=posW5d
+    networks:
+      - insure-net
     healthcheck:
       test: ["CMD", "pg_isready", "-U", "postgres"]
       interval: 10s
       retries: 5
       start_period: 10s
-    networks:
-      insure-net:
-        ipv4_address: 172.19.0.1
+     
+ 
     
 volumes:
   pgdata:
@@ -57,7 +59,3 @@ volumes:
 networks:
   insure-net:
     driver: bridge
-    ipam:
-      config:
-        - subnet: "172.19.0.0/16"
-          gateway: "172.19.0.1"
