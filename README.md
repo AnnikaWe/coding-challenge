@@ -128,7 +128,7 @@ Kilometerleistung-Faktor * Fahrzeugtyp-Faktor * Region-Faktor
 - LKW: 1.1
 
 
-**Region-Faktor: **
+**Region-Faktor:**
 - Baden-Württemberg: 0.3
 - Bayern: 0.2
 - Berlin: 0.4
