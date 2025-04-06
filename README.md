@@ -109,3 +109,42 @@ Das Repository verfügt über eine CI-Pipeline, die jedes Mal bei der Erstellung
 * Umfassenderes Error Handling umsetzten
 * **Code-Reviews**:
 	* Es sollte nicht direkt auf dem Hauptbranch gearbeitet werden. Dabei sollten Pull-Requests sollten unter Wahrung des 4-Augen-Prinzips überprüft werden.
+
+## Berechnungslogik:
+
+Kilometerleistung-Faktor * Fahrzeugtyp-Faktor * Region-Faktor
+
+**Kilometerleitstungs-Faktor:**
+- 0 bis 5.000 km: 0.5
+- 5.001 km bis 10.000 km: 1.0
+- 10.001 km bis 20.000 km: 1.5
+- ab 20.000km: 2.0
+
+**Fahrzeugtyp-Faktor:**
+- Motorrad: 0.3
+- Roller: 0.4
+- Elektroautos: 0.2
+- Nutzfahrzeuge: 0.5
+- LKW: 1.1
+
+
+**Region-Faktor: **
+- Baden-Württemberg: 0.3
+- Bayern: 0.2
+- Berlin: 0.4
+- Brandenburg: 1.0
+- Bremen: 0.5
+- Hamburg: 0.3
+- Hessen: 0.1
+- Mecklenburg-Vorpommern: 0.3
+- Niedersachsen: 0.2
+- Nordrhein-Westfalen: 0.4
+- Rheinland-Pfalz: 0.1
+- Sachsen: 0.2
+- Sachsen-Anhalt: 0.1
+- Schleswig-Holstein: 0.1
+- Thüringen: 0.3
+- Saarland: 0.2
+
+Welcher Region-Faktor verwendet wird, wird anhand der CSV-Datei ermittelt.
+
