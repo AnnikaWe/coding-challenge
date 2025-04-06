@@ -1,0 +1,35 @@
+name: Build Documentation
+
+on:
+  push:
+    branches:
+      - master
+  pull_request:
+    branches:
+      - master
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      - name: Set up Python
+        uses: actions/setup-python@v3
+        with:
+          python-version: '3.8'
+
+      - name: Install Sphinx
+        run: |
+          pip install sphinx
+
+      - name: Build docs
+        run: |
+          sphinx-build -b html docs/source docs/_build/html
+
+      - name: Upload docs as artifact
+        uses: actions/upload-pages-artifact@v3
+        with:
+          name: documentation
+          path: docs/_build/html/
