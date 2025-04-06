@@ -19,8 +19,8 @@ public class VehicleTypeFactorProviderTest {
 	void testGetVehicleTypeFactor() {
 		assertEquals(0.3, VehicleTypeFactorProvider.getVehicleTypeFactor("Motorrad"));
 		assertEquals(0.4, VehicleTypeFactorProvider.getVehicleTypeFactor("Roller"));
-		assertEquals(0.2, VehicleTypeFactorProvider.getVehicleTypeFactor("Elektroautos"));
-		assertEquals(0.5, VehicleTypeFactorProvider.getVehicleTypeFactor("Nutzfahrzeuge"));
+		assertEquals(0.2, VehicleTypeFactorProvider.getVehicleTypeFactor("Elektroauto"));
+		assertEquals(0.5, VehicleTypeFactorProvider.getVehicleTypeFactor("Nutzfahrzeug"));
 		assertEquals(1.1, VehicleTypeFactorProvider.getVehicleTypeFactor("LKW"));
 	}
 

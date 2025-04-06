@@ -17,8 +17,8 @@ public class VehicleTypeFactorProvider {
     static { 
         VEHICLE_TYPE_FACTORS.put("Motorrad",  Double.valueOf(0.3));
         VEHICLE_TYPE_FACTORS.put("Roller",  Double.valueOf(0.4));
-        VEHICLE_TYPE_FACTORS.put("Elektroautos",  Double.valueOf(0.2));
-        VEHICLE_TYPE_FACTORS.put("Nutzfahrzeuge",  Double.valueOf(0.5));
+        VEHICLE_TYPE_FACTORS.put("Elektroauto",  Double.valueOf(0.2));
+        VEHICLE_TYPE_FACTORS.put("Nutzfahrzeug",  Double.valueOf(0.5));
         VEHICLE_TYPE_FACTORS.put("LKW",  Double.valueOf(1.1));
     }
     
