@@ -1,5 +1,6 @@
 package com.insure.premium.service;
 
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.http.HttpEntity;
 import org.springframework.http.HttpHeaders;
 import org.springframework.http.ResponseEntity;
@@ -23,14 +24,17 @@ public class InsurancePremiumService {
 
 	private final InsurancePremiumRepository repository;
 	private final RestTemplate restTemplate = new RestTemplate();
-	private final String url = "http://premium-calculator:8080/insurance/premium";
+	private final String url;
     private final String clientId = "client-01";
     private final String clientSecret = "client-secret";
 
-	public InsurancePremiumService(InsurancePremiumRepository repository) {
-		this.repository = repository;
-		
-	}
+    public InsurancePremiumService(
+            InsurancePremiumRepository repository,
+            @Value("${external.premium-calculator.url}") String url
+        ) {
+            this.repository = repository;
+            this.url = url;
+        }
 	
 	private HttpHeaders createHeaders() {
         HttpHeaders headers = new HttpHeaders();

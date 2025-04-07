@@ -57,7 +57,7 @@ public class InsurancePremiumServiceTest {
 	@BeforeEach
 	void setUp() throws NoSuchFieldException, SecurityException, IllegalArgumentException, IllegalAccessException {
 		MockitoAnnotations.openMocks(this);
-		service = new InsurancePremiumService(repository);
+		service = new InsurancePremiumService(repository, "http://mockurl");
 		
 		// Use reflection to inject the mock RestTemplate into the service instance
 		Field restTemplateField = InsurancePremiumService.class.getDeclaredField("restTemplate");

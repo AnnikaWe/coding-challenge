@@ -11,7 +11,7 @@ import com.insure.common.model.InsurancePremiumResponse;
 import com.insure.premium.service.InsurancePremiumService;
 
 /**
- * Rest controller to handle requests from frontend.
+ * Controller to handle requests from frontend.
  * 
  * @author Annika Weisser
  * @version 1.0

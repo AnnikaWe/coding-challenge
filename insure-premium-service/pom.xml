@@ -126,6 +126,43 @@
 			<groupId>org.springframework.boot</groupId>
 			<artifactId>spring-boot-starter-thymeleaf</artifactId>
 		</dependency>
+		<dependency>
+			<groupId>org.junit.jupiter</groupId>
+			<artifactId>junit-jupiter</artifactId>
+			<version>5.8.1</version>
+			<scope>test</scope>
+		</dependency>
+		<dependency>
+			<groupId>org.testcontainers</groupId>
+			<artifactId>testcontainers</artifactId>
+			<version>1.20.6</version>
+			<scope>test</scope>
+		</dependency>
+		<dependency>
+			<groupId>org.testcontainers</groupId>
+			<artifactId>junit-jupiter</artifactId>
+			<version>1.20.6</version>
+			<scope>test</scope>
+		</dependency>
+		<dependency>
+			<groupId>org.testcontainers</groupId>
+			<artifactId>postgresql</artifactId>
+			<version>1.20.6</version>
+			<scope>test</scope>
+		</dependency>
+		<dependency>
+		    <groupId>org.mock-server</groupId>
+		    <artifactId>mockserver-client-java-no-dependencies</artifactId>
+		    <version>5.13.2</version>
+		</dependency>
+
+		<dependency>
+			<groupId>org.testcontainers</groupId>
+			<artifactId>mockserver</artifactId>
+			<version>1.19.3</version>
+			<scope>test</scope>
+		</dependency>
+
 
 	</dependencies>
 
@@ -135,17 +172,18 @@
 				<groupId>org.springframework.boot</groupId>
 				<artifactId>spring-boot-maven-plugin</artifactId>
 			</plugin>
-<!--			<plugin>-->
-<!--				<groupId>org.liquibase</groupId>-->
-<!--				<artifactId>liquibase-maven-plugin</artifactId>-->
-<!--				<configuration>-->
-<!--					<url>jdbc:postgresql://localhost:5432/postgres</url>-->
-<!--					<username>postgres</username>-->
-<!--					<password>posW5d</password>-->
-<!--					<driver>org.postgresql.Driver</driver>-->
-<!--					<changeLogFile>src/main/resources/liquibase/changelog.xml</changeLogFile>-->
-<!--				</configuration>-->
-<!--			</plugin>-->
+			<!--			<plugin>-->
+			<!--				<groupId>org.liquibase</groupId>-->
+			<!--				<artifactId>liquibase-maven-plugin</artifactId>-->
+			<!--				<configuration>-->
+			<!--					<url>jdbc:postgresql://localhost:5432/postgres</url>-->
+			<!--					<username>postgres</username>-->
+			<!--					<password>posW5d</password>-->
+			<!--					<driver>org.postgresql.Driver</driver>-->
+			<!--
+			<changeLogFile>src/main/resources/liquibase/changelog.xml</changeLogFile>-->
+			<!--				</configuration>-->
+			<!--			</plugin>-->
 		</plugins>
 	</build>
 </project>
