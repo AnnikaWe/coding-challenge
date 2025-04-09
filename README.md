@@ -59,7 +59,7 @@ Die Anwendung unterteilt sich in die folgenden drei Komponeten:
 
 ## Zusammenspiel der Komponenten
 
-Die Kommunikation zwischen den beiden Services erfolgt über **HTTP-Nachrichten**. Der **premium-calculator** stellt eine **REST-Schnittstelle** bereit, die vom **insurance-common** über **POST-Anfragen** angesprochen wird.
+Die Kommunikation zwischen den beiden Services erfolgt über **HTTP-Nachrichten**. Der **premium-calculator** stellt eine **REST-Schnittstelle** bereit, die vom **insure-premium-service** über **POST-Anfragen** angesprochen wird.
 
 ![Architecture Diagram](./classdiagrams/architecture.png)
 
